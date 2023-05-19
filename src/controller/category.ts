@@ -22,9 +22,9 @@ class CategoryController {
 
     public async Post(req: Request, res: Response) {
         try {
-            const { category_name } = req.body
+            const { category_name,category_name_en,category_name_uz } = req.body
 
-            const category = await AppDataSource.getRepository(CategoryEntity ).createQueryBuilder().insert().into(CategoryEntity ).values({ category_name }).returning("*").execute()
+            const category = await AppDataSource.getRepository(CategoryEntity ).createQueryBuilder().insert().into(CategoryEntity ).values({ category_name,category_name_en,category_name_uz}).returning("*").execute()
 
             res.json({
                 status: 201,
@@ -39,11 +39,11 @@ class CategoryController {
 
     public async Put(req: Request, res: Response) {
         try {
-            const { category_name  } = req.body
+            const { category_name,category_name_en,category_name_uz } = req.body
             const { id } = req.params
 
             const category = await AppDataSource.getRepository(CategoryEntity ).createQueryBuilder().update(CategoryEntity )
-                .set({ category_name  })
+                .set({ category_name,category_name_en,category_name_uz })
                 .where({ id })
                 .returning("*")
                 .execute()

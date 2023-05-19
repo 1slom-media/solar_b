@@ -12,6 +12,14 @@ export class CategoryEntity {
     @IsString()
     category_name: string
 
+    @Column({ type: "varchar", length: 100,nullable:true })
+    @IsString()
+    category_name_en: string
+
+    @Column({ type: "varchar", length: 100,nullable:true })
+    @IsString()
+    category_name_uz: string
+
     @CreateDateColumn({ type: "timestamp" })
     createdAt: Date;
 
